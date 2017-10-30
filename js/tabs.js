@@ -8,8 +8,7 @@ const tabsData = [
         tabTarget: 'elegance',
         backgroundImage: 'elegance.jpg',
         title: 'elegance',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere accumsan venenatis. Maecenas mauris lacus, efficitur ultricies pretium nec, cursus ut risus. Nullam felis augue, varius eget luctus in, finibus non enim. Nunc molestie felis risus, vitae volutpat magna lobortis ac. \n' +
-        '\n' + 'Nullam molestie vestibulum tortor, sed vulputate nisl commodo eget. Fusce et euismod orci. Sed imperdiet lectus nunc, efficitur lobortis orci sollicitudin et. ',
+        content: 'Maecenas mauris lacus, efficitur ultricies pretium nec, cursus ut risus. Nullam felis augue, varius eget luctus in, finibus non enim. Nunc molestie felis risus, vitae volutpat magna lobortis ac.' + '<br><br>' + ' molestie vestibulum tortor, sed vulputate nisl commodo eget. Fusce et euismod orci. Sed imperdiet lectus nunc, efficitur lobortis orci sollicitudin et. ',
         detailLink: '#'
     },
     {
@@ -17,8 +16,7 @@ const tabsData = [
         tabTarget: 'creation',
         backgroundImage: 'creation.jpg',
         title: 'creation',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere accumsan venenatis. Maecenas mauris lacus, efficitur ultricies pretium nec, cursus ut risus. Nullam felis augue, varius eget luctus in, finibus non enim. Nunc molestie felis risus, vitae volutpat magna lobortis ac. \n' +
-        '\n' + 'Nullam molestie vestibulum tortor, sed vulputate nisl commodo eget. Fusce et euismod orci. Sed imperdiet lectus nunc, efficitur lobortis orci sollicitudin et. ',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere accumsan venenatis. Maecenas mauris lacus, efficitur ultricies pretium nec, cursus ut risus. Nullam felis augue, varius eget luctus in, finibus non enim. Nunc molestie felis risus, vitae volutpat magna lobortis ac.' + '<br><br>' + ' molestie vestibulum tortor, sed vulputate nisl commodo eget. Fusce et euismod orci. Sed imperdiet lectus nunc, efficitur lobortis orci sollicitudin et. ',
         detailLink: '#'
     },
     {
@@ -26,8 +24,7 @@ const tabsData = [
         tabTarget: 'family-office',
         backgroundImage: 'family-office.jpg',
         title: 'family office',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere accumsan venenatis. Maecenas mauris lacus, efficitur ultricies pretium nec, cursus ut risus. Nullam felis augue, varius eget luctus in, finibus non enim. Nunc molestie felis risus, vitae volutpat magna lobortis ac. \n' +
-        '\n' + 'Nullam molestie vestibulum tortor, sed vulputate nisl commodo eget. Fusce et euismod orci. Sed imperdiet lectus nunc, efficitur lobortis orci sollicitudin et. ',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere accumsan venenatis. Maecenas mauris lacus, efficitur ultricies pretium nec, cursus ut risus. Nullam felis aulobortis ac.' + '<br><br>' + ' molestie vestibulum tortor, sed vulputate nisl commodo eget. Fusce et euismod orci. Sed imperdiet lectus nunc, efficitur lobortis orci sollicitudin et. ',
         detailLink: '#'
     },
     {
@@ -35,8 +32,7 @@ const tabsData = [
         tabTarget: 'experience',
         backgroundImage: 'experience.jpg',
         title: 'experience',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur posuere accumsan venenatis. Maecenas mauris lacus, efficitur ultricies pretium nec, cursus ut risus. Nullam felis augue, varius eget luctus in, finibus non enim. Nunc molestie felis risus, vitae volutpat magna lobortis ac. \n' +
-        '\n' + 'Nullam molestie vestibulum tortor, sed vulputate nisl commodo eget. Fusce et euismod orci. Sed imperdiet lectus nunc, efficitur lobortis orci sollicitudin et. ',
+        content: 'Curabitur posuere accumsan venenatis. Maecenas mauris lacus, efficitur ultricies pretium nec, cursus ut risus. Nullam  luctus in, finibus non enim. Nunc molestie felis risus, vitae volutpat magna lobortis ac.' + '<br><br>' + ' molestie vestibulum tortor, sed vulputate nisl commodo eget. Fusce et euismod orci. Sed imperdiet lectus nunc, efficitur lobortis orci sollicitudin et. ',
         detailLink: '#'
     },
 ];
@@ -62,21 +58,24 @@ $(document).ready(function () {
         tabsBtnsHtml = tabsTpl({partial: tabsBtnsHtml});
 
         tabsWrapper.append(tabsBtnsHtml + tabsContHtml);
-        $(".tabs-wrap + .tabs-content").addClass('active');
     }
 
     function addEvents() {
         $(".tabs-buttons li").on("click", function () {
-            $('.tabs-content').removeClass('active');
-            $('.tab-' + $(this).data("target")).addClass('active');
+            $('.tabs-buttons li').removeClass('active');
+            $(this).addClass('active');
+            $('.tabs-content').removeClass('animate');
+            $('.tab-' + $(this).data("target")).addClass('animate');
         });
     }
 
-    function init() {
+    // Tabs init
+    (function () {
         createDom();
         addEvents();
-    }
 
-    init();
+        // Init active tab
+        $(".tabs-buttons li:nth-child(2)").click();
+    })();
 });
 

@@ -20,6 +20,9 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'mustache-loader'
+            },
+            {
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000'
             }
         ]
     },
@@ -29,7 +32,7 @@ module.exports = {
             files: [
                 './**/*.html',
                 './**/*.scss',
-                './js/*.js',
+                './js/*.js'
             ]
         }),
         new webpack.ProvidePlugin({
