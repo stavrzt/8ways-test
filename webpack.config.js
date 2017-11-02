@@ -27,7 +27,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin("../css/styles.css"),
+        new ExtractTextPlugin("../css/0styles.css"),
         new WatchLiveReloadPlugin({
             files: [
                 './**/*.html',
